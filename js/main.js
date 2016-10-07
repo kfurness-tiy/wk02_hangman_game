@@ -2,21 +2,38 @@
 
 let randomWord = ""; // chosen in findRandomWord
 
+    /* Step 1-a Will put input into var guess
+    (from startGuessCheck()) */
+function playerInput () {
+  return document.querySelector('input').value;
+}
 
-    /* Step TWO: Pass default settings for forms
-    so random number/word will NOT be reset
-    Also calls function playerGuess() and checkGuess()*/
-function byPassDefault() {
-  var guess = playerGuess();
-  var response = checkGuess(guess);
-  showResponse(response);
+    /*Step 1-b Checking guess */
+function checkGuess(guess) {
+
+}
+
+    /* Do not know what this does */
+function showResponse(response) {
+  document.querySelector('.response').innerHTML = response;
+}
+
+    /* Step 1: The function playerInput, gets put inside the checkGuess function (which will be give var guess) */
+function startGuessCheck() {
+  var guess = playerInput(); //Takes input, calls it guess
+  console.log(guess);
+  // var response = checkGuess(guess);
+      /* Have no idea what this does.
+      Did not add function from game example...*/
+  // showResponse(response);
   return false;//bypass form default
 }
 
-    /* Step TWO:A Stores players input */
-function playerGuess () {
-  return document.querySelector('input').value;
-}
+
+
+
+
+
 
     /*create function getRandomNumber to
      help choose randomWord */
@@ -29,7 +46,6 @@ function getRandomNumber (min, max) {
     // choose a random word from array commonWords
 function findRandomWord () {
   let number = getRandomNumber(0, commonWords.length);
-  console.log(number);
   randomWord = commonWords[number];
   console.log(randomWord);
   return randomWord;
@@ -37,6 +53,6 @@ function findRandomWord () {
 
     /* Step ONE: when button is clikcked,
     go to the function byPassDefault */
-document.querySelector('button').onclick = byPassDefault();
+document.querySelector('button').onclick = startGuessCheck;
 
 findRandomWord();
