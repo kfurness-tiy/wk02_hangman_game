@@ -44,6 +44,12 @@ function checkGuess(guess) {
   else if (guess.length > 1) {
     return 'Please only type in one letter at a time.'
   }
+  else {
+    var splitRandomWord = randomWord.split("");
+    if (splitRandomWord.indexOf(guess) === -1) {
+      return "Wrong letter, try again."
+    }
+  }
 }
 
     /* Do not know what this does */
