@@ -1,6 +1,22 @@
 "use strict";
 
-let randomWord = ""; // chosen in findRandomWord
+var randomWord = findRandomWord(); // chosen in findRandomWord
+
+/*create function getRandomNumber to
+ help choose randomWord */
+function getRandomNumber (min, max) {
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// choose a random word from array commonWords
+function findRandomWord () {
+let number = getRandomNumber(0, commonWords.length);
+randomWord = commonWords[number];
+console.log("Random Word: " + randomWord);
+return randomWord;
+}
 
     /* Step 1-a Will put input into var guess
     (from startGuessCheck()) */
@@ -30,29 +46,6 @@ function startGuessCheck() {
 }
 
 
-
-
-
-
-
-    /*create function getRandomNumber to
-     help choose randomWord */
-function getRandomNumber (min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-    // choose a random word from array commonWords
-function findRandomWord () {
-  let number = getRandomNumber(0, commonWords.length);
-  randomWord = commonWords[number];
-  console.log(randomWord);
-  return randomWord;
-}
-
     /* Step ONE: when button is clikcked,
     go to the function byPassDefault */
 document.querySelector('button').onclick = startGuessCheck;
-
-findRandomWord();
