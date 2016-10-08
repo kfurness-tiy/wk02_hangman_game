@@ -3,6 +3,7 @@
 var randomWord = findRandomWord(); // chosen in findRandomWord
 var mistakesLeft = 8;
 var bodyCount = 0;
+var splitRandomWord = randomWord.split("");
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -14,7 +15,7 @@ function getRandomNumber (min, max) {
 
 function showTracker (randomWord) {
   let randomLength = randomWord.length;
-  let tracker = "";
+  var tracker = "";
   for (var i=0; i < randomLength; i++) {
     tracker += "_ ";
     document.querySelector('.tracker').innerHTML = tracker;
@@ -38,7 +39,6 @@ function playerInput () {
 
     /*Step 1-b Checking guess */
 function checkGuess(guess) {
-  var splitRandomWord = randomWord.split("");
   let numberString = "0123456789"
   if (numberString.indexOf(guess) >= 0) {
     return 'Please put in a letter';
@@ -50,9 +50,20 @@ function checkGuess(guess) {
       mistakeTracker();
       return "Wrong letter, try again."
   }
-  // else {
-  //   correctLetter();
-  // }
+  else {
+    var correctGuess = guess;
+    correctLetter(correctGuess);
+    return "Good job!";
+  }
+}
+
+/* *************WORK IN PROGRES **************** */
+function correctLetter(correctGuess) {
+  let correctSpot = splitRandomWord.indexOf(correctGuess);
+  console.log(correctSpot);
+  // let newTracker = tracker;
+  // newTracker += newTracker.splice(correctSpot, 1, guess);
+  // console.log(newTracker);
 }
 
 function showMistake(mistakesMessage) {
