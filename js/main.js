@@ -1,6 +1,7 @@
 "use strict";
 
 var randomWord = findRandomWord(); // chosen in findRandomWord
+var mistakesLeft = 8;
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -12,7 +13,6 @@ function getRandomNumber (min, max) {
 
 function showTracker (randomWord) {
   let randomLength = randomWord.length;
-  console.log(randomLength);
   let tracker = "";
   for (var i=0; i < randomLength; i++) {
     tracker += "_ ";
@@ -46,11 +46,20 @@ function checkGuess(guess) {
     return 'Please only type in one letter at a time.'
   }
   else if (splitRandomWord.indexOf(guess) === -1) {
+      showMistake();
       return "Wrong letter, try again."
   }
   // else {
   //   correctLetter();
   // }
+}
+
+function showMistake() {
+  mistakesLeft -= 1;
+  if (mistakesLeft > 0) {
+    let mistakesMessage =  "Mistakes Left: " + mistakesLeft;
+    console.log(mistakesMessage);
+  }
 }
 
     /* Do not know what this does */
