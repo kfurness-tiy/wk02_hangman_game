@@ -3,4 +3,5 @@
   height: 50px;
   background-color: skyblue;
   margin: 20px; 0;
+  visibility: hidden;
 }

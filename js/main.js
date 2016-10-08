@@ -2,6 +2,7 @@
 
 var randomWord = findRandomWord(); // chosen in findRandomWord
 var mistakesLeft = 8;
+var bodyCount = 0;
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -60,10 +61,14 @@ function showMistake(mistakesMessage) {
 
 function mistakeTracker() {
   mistakesLeft -= 1;
-  console.log('mistakes left: ' + mistakesLeft)
+  let body = ['head', 'neck', 'arm1', 'arm2', 'torso', 'leg1', 'leg2'];
+  var selectBody = body[bodyCount];
   if (mistakesLeft > 0) {
     let mistakesMessage =  "Mistakes Left: " + mistakesLeft;
     showMistake(mistakesMessage);
+    document.getElementById(selectBody).style.visibility = "visible";
+    bodyCount += 1;
+    console.log(bodyCount);
   } else {
     let lostMessage = "I'm sorry to say that you lost. The word was " + randomWord;
     document.querySelector('.mistakesLeft').innerHTML = lostMessage;
