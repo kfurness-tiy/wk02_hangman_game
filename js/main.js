@@ -5,15 +5,26 @@ var randomWord = findRandomWord(); // chosen in findRandomWord
 /*create function getRandomNumber to
  help choose randomWord */
 function getRandomNumber (min, max) {
-min = Math.ceil(min);
-max = Math.floor(max);
-return Math.floor(Math.random() * (max - min)) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function showTracker (randomWord) {
+  let randomLength = randomWord.length;
+  console.log(randomLength);
+  let tracker = "";
+  for (var i=0; i < randomLength; i++) {
+    tracker += "_ ";
+    document.querySelector('.tracker').innerHTML = tracker;
+  }
 }
 
 // choose a random word from array commonWords
 function findRandomWord () {
 let number = getRandomNumber(0, commonWords.length);
 randomWord = commonWords[number];
+showTracker(randomWord);
 console.log("Random Word: " + randomWord);
 return randomWord;
 }
