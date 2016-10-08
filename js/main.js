@@ -6,7 +6,6 @@ var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = '';
 
-
 /*create function getRandomNumber to
  help choose randomWord */
 function getRandomNumber (min, max) {
@@ -74,11 +73,11 @@ function checkGuess(guess) {
 
 /* *************WORK IN PROGRES **************** */
 function correctLetter(correctGuess) {
+  console.log(tracker);
   let correctSpot = splitRandomWord.indexOf(correctGuess);
-  let newTracker = tracker;
-  console.log(newTracker);
+  let newTracker = '';
+  showTracker(newTracker);
   // newTracker = tracker.splice(correctSpot, 1, correctGuess);
-  // document.querySelector('.tracker').innerHTML = newTracker;
 
   // newTracker += newTracker.splice(correctSpot, 1, guess);
   // console.log(newTracker);
