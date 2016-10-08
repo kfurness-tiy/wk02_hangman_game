@@ -37,6 +37,7 @@ function playerInput () {
 
     /*Step 1-b Checking guess */
 function checkGuess(guess) {
+  var splitRandomWord = randomWord.split("");
   let numberString = "0123456789"
   if (numberString.indexOf(guess) >= 0) {
     return 'Please put in a letter';
@@ -44,12 +45,12 @@ function checkGuess(guess) {
   else if (guess.length > 1) {
     return 'Please only type in one letter at a time.'
   }
-  else {
-    var splitRandomWord = randomWord.split("");
-    if (splitRandomWord.indexOf(guess) === -1) {
+  else if (splitRandomWord.indexOf(guess) === -1) {
       return "Wrong letter, try again."
-    }
   }
+  // else {
+  //   correctLetter();
+  // }
 }
 
     /* Do not know what this does */
