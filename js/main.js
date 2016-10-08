@@ -60,9 +60,13 @@ function showMistake(mistakesMessage) {
 
 function mistakeTracker() {
   mistakesLeft -= 1;
-  if (mistakesLeft >= 0) {
+  console.log('mistakes left: ' + mistakesLeft)
+  if (mistakesLeft > 0) {
     let mistakesMessage =  "Mistakes Left: " + mistakesLeft;
     showMistake(mistakesMessage);
+  } else {
+    let lostMessage = "I'm sorry to say that you lost. The word was " + randomWord;
+    document.querySelector('.mistakesLeft').innerHTML = lostMessage;
   }
 }
 
