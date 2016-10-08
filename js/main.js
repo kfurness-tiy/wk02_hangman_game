@@ -4,6 +4,8 @@ var randomWord = findRandomWord(); // chosen in findRandomWord
 var mistakesLeft = 8;
 var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
+var tracker = '';
+
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -13,20 +15,33 @@ function getRandomNumber (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function showTracker (randomWord) {
+// function showTracker (randomWord) {
+//   let randomLength = randomWord.length;
+//   tracker = "";
+//   for (var i=0; i < randomLength; i++) {
+//     tracker += "_ ";
+//     document.querySelector('.tracker').innerHTML = tracker;
+//   }
+// }
+
+function trackerCreator (randomWord) {
   let randomLength = randomWord.length;
-  var tracker = "";
+  tracker = "";
   for (var i=0; i < randomLength; i++) {
     tracker += "_ ";
-    document.querySelector('.tracker').innerHTML = tracker;
   }
+}
+
+function showTracker (tracker) {
+    document.querySelector('.tracker').innerHTML = tracker;
 }
 
 // choose a random word from array commonWords
 function findRandomWord () {
 let number = getRandomNumber(0, commonWords.length);
 randomWord = commonWords[number];
-showTracker(randomWord);
+trackerCreator(randomWord);
+showTracker(tracker);
 console.log("Random Word: " + randomWord);
 return randomWord;
 }
@@ -60,8 +75,11 @@ function checkGuess(guess) {
 /* *************WORK IN PROGRES **************** */
 function correctLetter(correctGuess) {
   let correctSpot = splitRandomWord.indexOf(correctGuess);
-  console.log(correctSpot);
-  // let newTracker = tracker;
+  let newTracker = tracker;
+  console.log(newTracker);
+  // newTracker = tracker.splice(correctSpot, 1, correctGuess);
+  // document.querySelector('.tracker').innerHTML = newTracker;
+
   // newTracker += newTracker.splice(correctSpot, 1, guess);
   // console.log(newTracker);
 }
