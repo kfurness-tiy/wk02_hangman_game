@@ -38,9 +38,11 @@ function playerInput () {
     /*Step 1-b Checking guess */
 function checkGuess(guess) {
   let numberString = "0123456789"
-  if (guess.indexOf(numberString)) {
-    console.log('cat');
+  if (numberString.indexOf(guess) >= 0) {
     return 'Please put in a letter';
+  }
+  else if (guess.length > 1) {
+    return 'Please only type in one letter at a time.'
   }
 }
 
