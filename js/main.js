@@ -46,7 +46,7 @@ function checkGuess(guess) {
     return 'Please only type in one letter at a time.'
   }
   else if (splitRandomWord.indexOf(guess) === -1) {
-      showMistake();
+      mistakeTracker();
       return "Wrong letter, try again."
   }
   // else {
@@ -54,11 +54,15 @@ function checkGuess(guess) {
   // }
 }
 
-function showMistake() {
+function showMistake(mistakesMessage) {
+  document.querySelector('.mistakesLeft').innerHTML = mistakesMessage;
+}
+
+function mistakeTracker() {
   mistakesLeft -= 1;
-  if (mistakesLeft > 0) {
+  if (mistakesLeft >= 0) {
     let mistakesMessage =  "Mistakes Left: " + mistakesLeft;
-    console.log(mistakesMessage);
+    showMistake(mistakesMessage);
   }
 }
 
