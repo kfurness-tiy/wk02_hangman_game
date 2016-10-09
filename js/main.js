@@ -14,14 +14,6 @@ function getRandomNumber (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// function showTracker (randomWord) {
-//   let randomLength = randomWord.length;
-//   tracker = "";
-//   for (var i=0; i < randomLength; i++) {
-//     tracker += "_ ";
-//     document.querySelector('.tracker').innerHTML = tracker;
-//   }
-// }
 
 function trackerCreator (randomWord) {
   let randomLength = randomWord.length;
@@ -74,10 +66,14 @@ function checkGuess(guess) {
 /* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
   trackerCreator (randomWord);
-  console.log(splitRandomWord);
+  console.log(guess)
   let correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
-  // let newTracker = tracker.splice(correctSpot, 1, guess);
+  let newTracker = tracker.split(' ');
+  let newTracker2 = newTracker.splice(coorectSpot, 1, guess);
+  console.log(newTracker);
+  // var result = newTracker2.join('');
+  // showTracker (result);
   // showTracker(newTracker);
   // newTracker = tracker.splice(correctSpot, 1, correctGuess);
 
