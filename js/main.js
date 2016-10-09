@@ -46,6 +46,8 @@ function playerInput () {
     /*Step 1-b Checking guess */
 function checkGuess(guess) {
   let numberString = "0123456789"
+  guess = guess.toLowerCase();
+  console.log(guess);
   if (numberString.indexOf(guess) >= 0) {
     return 'Please put in a letter';
   }
@@ -71,6 +73,7 @@ function correctLetter(guess) {
   console.log(correctSpot);
   let newTracker = tracker.split(' ');
   let newTracker2 = newTracker.splice(correctSpot, 1, guess);
+  // let newTracker = tracker.split(' ').splice(correctSpot, 1, guess).join(' ');
   console.log(newTracker);
   // var result = newTracker2.join('');
   // showTracker (result);
