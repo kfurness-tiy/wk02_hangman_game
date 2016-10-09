@@ -70,7 +70,7 @@ function correctLetter(guess) {
   let correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
   let newTracker = tracker.split(' ');
-  let newTracker2 = newTracker.splice(coorectSpot, 1, guess);
+  let newTracker2 = newTracker.splice(correctSpot, 1, guess);
   console.log(newTracker);
   // var result = newTracker2.join('');
   // showTracker (result);
