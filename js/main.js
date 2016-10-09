@@ -47,7 +47,6 @@ function playerInput () {
 function checkGuess(guess) {
   let numberString = "0123456789"
   guess = guess.toLowerCase();
-  console.log(guess);
   if (numberString.indexOf(guess) >= 0) {
     return 'Please put in a letter';
   }
@@ -69,12 +68,20 @@ function checkGuess(guess) {
 function correctLetter(guess) {
   trackerCreator (randomWord);
   console.log(guess)
-  let correctSpot = splitRandomWord.indexOf(guess);
-  console.log(correctSpot);
-  let newTracker = tracker.split(' ');
-  let newTracker2 = newTracker.splice(correctSpot, 1, guess);
+  let newTracker = "";
+  for (var i = 0; i < randomWord.length; i++) {
+    let correctSpot = splitRandomWord.indexOf(guess, i);
+    console.log(correctSpot);
+    if (correctSpot >= 0) {
+    newTracker = tracker.split(' ');
+    newTracker += newTracker.splice(correctSpot, 1, guess);
+    console.log(newTracker);
+    newTracker = showTracker(newTracker);
+  }
+
+  }
   // let newTracker = tracker.split(' ').splice(correctSpot, 1, guess).join(' ');
-  console.log(newTracker);
+
   // var result = newTracker2.join('');
   // showTracker (result);
   // showTracker(newTracker);
