@@ -4,9 +4,8 @@ var randomWord = findRandomWord(); // chosen in findRandomWord
 var mistakesLeft = 8;
 var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
-var tracker = '';
-let newTracker = "";
-var correctArr = [];
+var tracker = "";
+var newTracker = "";
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -18,7 +17,7 @@ function getRandomNumber (min, max) {
 
 
 function trackerCreator (randomWord) {
-  let randomLength = randomWord.length;
+  var randomLength = randomWord.length;
   tracker = "";
   for (var i=0; i < randomLength; i++) {
     tracker += "_";
@@ -29,71 +28,54 @@ function showTracker (tracker) {
     document.querySelector('.tracker').innerHTML = tracker;
 }
 
+
 // choose a random word from array commonWords
 function findRandomWord () {
-let number = getRandomNumber(0, commonWords.length);
-randomWord = commonWords[number];
-trackerCreator(randomWord);
-showTracker(tracker);
-console.log("Random Word: " + randomWord);
-return randomWord;
+  var correctArr = [];
+  let number = getRandomNumber(0, commonWords.length);
+  randomWord = commonWords[number];
+  trackerCreator(randomWord);
+  showTracker(tracker);
+  console.log("Random Word: " + randomWord);
+  createArray(correctArr);
+  return randomWord;
 }
 
-    /* Step 1-a Will put input into var guess
-    (from startGuessCheck()) */
-function playerInput () {
-  return document.querySelector('input').value;
-}
-
-    /*Step 1-b Checking guess */
-function checkGuess(guess) {
-  let numberString = "0123456789"
-  guess = guess.toLowerCase();
-  if (numberString.indexOf(guess) >= 0) {
-    return 'Please put in a letter';
+function createArray (correctArr) {
+  for (var i=0; i < randomWord.length; i++) {
+    var total = correctArr.push(i);
   }
-  else if (guess.length > 1) {
-    return 'Please only type in one letter at a time.'
-  }
-  else if (splitRandomWord.indexOf(guess) === -1) {
-      mistakeTracker();
-      return "Wrong letter, try again."
-  }
-  else {
-    // var correctGuess = guess;
-    correctLetter(guess);
-    return "Good job!";
-  }
+  console.log(correctArr);
+  return correctArr;
 }
 
 /* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
+  console.log(guess);
   trackerCreator (randomWord);
-  console.log(guess)
+  let newTracker = "";
+  let correctSpot = splitRandomWord.indexOf(guess);
+  console.log(correctSpot);
+  newTracker = tracker.split(' ');
+  console.log("new tracker: " + newTracker)
+  newTracker.splice(0, 1, 'p');
+  console.log(newTracker);
+  newTracker = showTracker(newTracker);
+  // for (var i = 0; i < randomWord.length; i++) {
+  //   let correctSpot = splitRandomWord.indexOf(guess, i);
+  //   console.log(correctSpot);
+  // }
+  //     if (correctSpot >= 0) {}
 
-  for (var i = 0; i < randomWord.length; i++) {
-    let correctSpot = splitRandomWord.indexOf(guess, i);
-    console.log(correctSpot);
-    if (correctSpot >= 0) {
-    newTracker = tracker.split(' ');
-    console.log("split: " + newTracker);
-    newTracker += newTracker.splice(correctSpot, 1, guess);
-    correctWord += newTracker;
-    console.log(newTracker);
-    console.log("correct word: " + correctWord);
+      // newTracker = tracker.split(' ');
+      // console.log("split: " + newTracker);
+      // newTracker += newTracker.splice(correctSpot, 1, guess).join('');
+
+    // console.log(newTracker);
     // newTracker = showTracker(newTracker);
-  }
-
-  }
-  // let newTracker = tracker.split(' ').splice(correctSpot, 1, guess).join(' ');
-
-  // var result = newTracker2.join('');
-  // showTracker (result);
-  // showTracker(newTracker);
-  // newTracker = tracker.splice(correctSpot, 1, correctGuess);
-
-  // newTracker += newTracker.splice(correctSpot, 1, guess);
-  // console.log(newTracker);
+  // }
+  //
+  // }
 }
 
 function showMistake(mistakesMessage) {
@@ -111,14 +93,41 @@ function mistakeTracker() {
     bodyCount += 1;
     console.log(bodyCount);
   } else {
-    let lostMessage = "I'm sorry to say that you lost. The word was " + randomWord;
+    let lostMessage = "I'm sorry to say that you lost. The word was: " + randomWord;
     document.querySelector('.mistakesLeft').innerHTML = lostMessage;
   }
 }
 
-    /* Do not know what this does */
+    /* Shows feedback to player */
 function showResponse(response) {
   document.querySelector('.response').innerHTML = response;
+}
+
+/*Step 1-b Checking guess */
+function checkGuess(guess) {
+let numberString = "0123456789"
+guess = guess.toLowerCase();
+if (numberString.indexOf(guess) >= 0) {
+return 'Please put in a letter';
+}
+else if (guess.length > 1) {
+return 'Please only type in one letter at a time.'
+}
+else if (splitRandomWord.indexOf(guess) === -1) {
+  mistakeTracker();
+  return "Wrong letter, try again."
+}
+else {
+// var correctGuess = guess;
+correctLetter(guess);
+return "Good job!";
+}
+}
+
+    /* Step 1-a Will put input into var guess
+    (from startGuessCheck()) */
+function playerInput () {
+  return document.querySelector('input').value;
 }
 
     /* Step 1: The function playerInput, gets put inside the checkGuess function (which will be give var guess) */
