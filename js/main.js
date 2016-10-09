@@ -6,7 +6,7 @@ var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = "";
 var newTracker = "";
-var poop = "";
+var poop = [];
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -52,17 +52,16 @@ function createArray (correctArr) {
 /* *************WORK IN PROGRES **************** */
 /* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
-  var correctArr = [];
+  var correctArr = poop;
+  console.log('poop: ' + poop)
   createArray(correctArr);
   var correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
   if (correctArr.indexOf(correctSpot) >= 0) {
     correctArr.splice(correctSpot, 1, guess);
-    poop = correctArr;
-    console.log(poop);
-  }
-
-
+    // correctArr = correctArr;
+    console.log(correctArr);
+  } 
 }
 
 function showMistake(mistakesMessage) {
