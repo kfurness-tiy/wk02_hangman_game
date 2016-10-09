@@ -6,7 +6,7 @@
 var commonWords = [
   "the","and","you","that",
   "was","for","are","with","his","they",
-  "this","have","from","or","one","had","by","word","but",
+  "this","have","from","one","had","word","but",
   "not",
   "what","all","were","when","your","can","said","there",
   "use","each","which","she","do","how","their","will",

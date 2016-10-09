@@ -5,6 +5,8 @@ var mistakesLeft = 8;
 var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = '';
+let newTracker = "";
+var correctArr = [];
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -19,7 +21,7 @@ function trackerCreator (randomWord) {
   let randomLength = randomWord.length;
   tracker = "";
   for (var i=0; i < randomLength; i++) {
-    tracker += "_ ";
+    tracker += "_";
   }
 }
 
@@ -68,15 +70,18 @@ function checkGuess(guess) {
 function correctLetter(guess) {
   trackerCreator (randomWord);
   console.log(guess)
-  let newTracker = "";
+
   for (var i = 0; i < randomWord.length; i++) {
     let correctSpot = splitRandomWord.indexOf(guess, i);
     console.log(correctSpot);
     if (correctSpot >= 0) {
     newTracker = tracker.split(' ');
+    console.log("split: " + newTracker);
     newTracker += newTracker.splice(correctSpot, 1, guess);
+    correctWord += newTracker;
     console.log(newTracker);
-    newTracker = showTracker(newTracker);
+    console.log("correct word: " + correctWord);
+    // newTracker = showTracker(newTracker);
   }
 
   }
