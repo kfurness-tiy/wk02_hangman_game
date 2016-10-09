@@ -6,7 +6,7 @@ var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = "";
 var newTracker = "";
-var poop = [];
+var correctGuessArr = []; //This is trying to save correct answers in an array
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -52,16 +52,16 @@ function createArray (correctArr) {
 /* *************WORK IN PROGRES **************** */
 /* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
-  var correctArr = poop;
-  console.log('poop: ' + poop)
+  var correctArr = correctGuessArr;
+  console.log('correctGuessArr: ' + correctGuessArr)
   createArray(correctArr);
   var correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
   if (correctArr.indexOf(correctSpot) >= 0) {
     correctArr.splice(correctSpot, 1, guess);
-    // correctArr = correctArr;
+    correctArr = correctArr;
     console.log(correctArr);
-  } 
+  }
 }
 
 function showMistake(mistakesMessage) {
@@ -120,7 +120,7 @@ function playerInput () {
 function startGuessCheck() {
   var guess = playerInput(); //Takes input, calls it guess
   var response = checkGuess(guess);
-    /* checkGuess will return a response based on the answer
+    /* checkGuess will return a response based  on the answer
     and that feedback provided will go to this function and
     print on the HTML */
   showResponse(response);
@@ -128,6 +128,6 @@ function startGuessCheck() {
 }
 
 
-    /* Step ONE: when button is clikcked,
+    /* Step ONE: when button is clicked,
     go to the function byPassDefault */
 document.querySelector('button').onclick = startGuessCheck;
