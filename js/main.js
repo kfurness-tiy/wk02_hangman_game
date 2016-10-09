@@ -65,18 +65,20 @@ function checkGuess(guess) {
       return "Wrong letter, try again."
   }
   else {
-    var correctGuess = guess;
-    correctLetter(correctGuess);
+    // var correctGuess = guess;
+    correctLetter(guess);
     return "Good job!";
   }
 }
 
 /* *************WORK IN PROGRES **************** */
-function correctLetter(correctGuess) {
-  console.log(tracker);
-  let correctSpot = splitRandomWord.indexOf(correctGuess);
-  let newTracker = '';
-  showTracker(newTracker);
+function correctLetter(guess) {
+  trackerCreator (randomWord);
+  console.log(splitRandomWord);
+  let correctSpot = splitRandomWord.indexOf(guess);
+  console.log(correctSpot);
+  // let newTracker = tracker.splice(correctSpot, 1, guess);
+  // showTracker(newTracker);
   // newTracker = tracker.splice(correctSpot, 1, correctGuess);
 
   // newTracker += newTracker.splice(correctSpot, 1, guess);
