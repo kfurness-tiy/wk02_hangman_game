@@ -6,6 +6,7 @@ var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = "";
 var newTracker = "";
+var poop = "";
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -31,13 +32,11 @@ function showTracker (tracker) {
 
 // choose a random word from array commonWords
 function findRandomWord () {
-  var correctArr = [];
   let number = getRandomNumber(0, commonWords.length);
   randomWord = commonWords[number];
   trackerCreator(randomWord);
   showTracker(tracker);
   console.log("Random Word: " + randomWord);
-  createArray(correctArr);
   return randomWord;
 }
 
@@ -46,36 +45,24 @@ function createArray (correctArr) {
     var total = correctArr.push(i);
   }
   console.log(correctArr);
-  return correctArr;
 }
 
 /* *************WORK IN PROGRES **************** */
+/* *************WORK IN PROGRES **************** */
+/* *************WORK IN PROGRES **************** */
+/* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
-  console.log(guess);
-  trackerCreator (randomWord);
-  let newTracker = "";
-  let correctSpot = splitRandomWord.indexOf(guess);
+  var correctArr = [];
+  createArray(correctArr);
+  var correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
-  newTracker = tracker.split(' ');
-  console.log("new tracker: " + newTracker)
-  newTracker.splice(0, 1, 'p');
-  console.log(newTracker);
-  newTracker = showTracker(newTracker);
-  // for (var i = 0; i < randomWord.length; i++) {
-  //   let correctSpot = splitRandomWord.indexOf(guess, i);
-  //   console.log(correctSpot);
-  // }
-  //     if (correctSpot >= 0) {}
+  if (correctArr.indexOf(correctSpot) >= 0) {
+    correctArr.splice(correctSpot, 1, guess);
+    poop = correctArr;
+    console.log(poop);
+  }
 
-      // newTracker = tracker.split(' ');
-      // console.log("split: " + newTracker);
-      // newTracker += newTracker.splice(correctSpot, 1, guess).join('');
 
-    // console.log(newTracker);
-    // newTracker = showTracker(newTracker);
-  // }
-  //
-  // }
 }
 
 function showMistake(mistakesMessage) {
