@@ -1,5 +1,7 @@
 "use strict";
 
+/*TEST*/
+
 var randomWord = findRandomWord(); // chosen in findRandomWord
 var mistakesLeft = 8;
 var bodyCount = 0;
