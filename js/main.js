@@ -1,12 +1,13 @@
 "use strict";
 
 var randomWord = findRandomWord(); // chosen in findRandomWord
+var correctArr = createArray();
 var mistakesLeft = 8;
 var bodyCount = 0;
 var splitRandomWord = randomWord.split("");
 var tracker = "";
 var newTracker = "";
-var correctGuessArr = []; //This is trying to save correct answers in an array
+// var correctGuessArr = []; //This is trying to save correct answers in an array
 
 /*create function getRandomNumber to
  help choose randomWord */
@@ -40,11 +41,13 @@ function findRandomWord () {
   return randomWord;
 }
 
-function createArray (correctArr) {
+function createArray (arr) {
+  var arr = [];
   for (var i=0; i < randomWord.length; i++) {
-    var total = correctArr.push(i);
+    var total = arr.push(i);
   }
-  console.log(correctArr);
+  console.log(arr);
+  return arr;
 }
 
 /* *************WORK IN PROGRES **************** */
@@ -52,16 +55,14 @@ function createArray (correctArr) {
 /* *************WORK IN PROGRES **************** */
 /* *************WORK IN PROGRES **************** */
 function correctLetter(guess) {
-  var correctArr = correctGuessArr;
-  console.log('correctGuessArr: ' + correctGuessArr)
-  createArray(correctArr);
+  console.log("test: " + correctArr);
+  var correctGuessArr = correctArr;
+  console.log('correctGuessArr: ' + correctArr);
   var correctSpot = splitRandomWord.indexOf(guess);
   console.log(correctSpot);
-  if (correctArr.indexOf(correctSpot) >= 0) {
-    correctArr.splice(correctSpot, 1, guess);
-    correctArr = correctArr;
-    console.log(correctArr);
-  }
+  correctArr.splice(correctSpot, 1, guess);
+  console.log('final ' + correctArr);
+  console.log(correctArr.join(''));
 }
 
 function showMistake(mistakesMessage) {
