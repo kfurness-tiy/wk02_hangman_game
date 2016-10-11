@@ -39,7 +39,6 @@ function checkGuess (guess, randomWord, tracker) {
       tracker[i] = guess;
     }
   }
-  console.log(tracker);
 }
 
 function playerInput () {
@@ -69,3 +68,9 @@ function windowOnload () {
 window.onload = windowOnload();
 
 document.querySelector('button').onclick = userGuess;
+
+/* *************Next Step ***************/
+/* *************************************/
+/*  How to tell if someone has won  */
+/* *************************************/
+/* *************************************/
