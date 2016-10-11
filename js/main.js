@@ -31,7 +31,6 @@ function makeTracker (randowWord) {
   for (var i = 0; i < randomWord.length; i++) {
     tracker.push(' _');
   }
-  return tracker;
 }
 
 function checkGuess (guess, randomWord, tracker) {
@@ -41,11 +40,14 @@ function checkGuess (guess, randomWord, tracker) {
     }
   }
   console.log(tracker);
-  return tracker;
 }
 
 function playerInput () {
   return document.querySelector('input').value;
+}
+
+function printTracker (tracker) {
+    document.querySelector('.tracker').innerHTML = tracker.join(' ');
 }
 
     //Start game
@@ -53,6 +55,7 @@ function playerInput () {
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
+  printTracker(tracker);
   // showResponse(response);
   return false;//bypass form default
 }
