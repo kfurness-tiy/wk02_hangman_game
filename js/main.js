@@ -1,6 +1,7 @@
 "use strict";
 
 let guess;
+let guessedLetters;
 let randomWord;
 let tracker= [];
 
@@ -33,6 +34,20 @@ function makeTracker (randowWord) {
   }
 }
 
+// If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
+function guessTracker (guess, guessedLetters) {
+  // TODO  make if statement with undefined
+  if (guessedLetters === undefined) {
+    guessedLetters = [];
+    guessedLetters[0] = guess;
+  }
+  // for (var i = 0; i < guessedLetters.length; i++) {
+  //     console.log('test: ' + guess);
+  //   //same letter is in guessedLetters already
+  //   // (if guess === guessedLetter[i]) {
+  //   }
+}
+
 function checkGuess (guess, randomWord, tracker) {
   for (var i = 0; i < randomWord.length; i++) {
     if (guess === randomWord[i]) {
@@ -54,7 +69,7 @@ function printTracker (tracker) {
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
-
+  guessTracker(guess, guessedLetters);
   let check = checkGuess(guess, randomWord, tracker);
   printTracker(tracker);
   console.log(tracker.join(''));
