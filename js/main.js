@@ -37,6 +37,7 @@ function checkGuess (guess, randomWord, tracker) {
   for (var i = 0; i < randomWord.length; i++) {
     if (guess === randomWord[i]) {
       tracker[i] = guess;
+      return true;
     }
   }
 }
@@ -53,8 +54,13 @@ function printTracker (tracker) {
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
+
   let check = checkGuess(guess, randomWord, tracker);
   printTracker(tracker);
+  console.log(tracker.join(''));
+  if (tracker.join('') === randomWord) {
+    alert ('You have won this game, you lucky dog!');
+  }
   // showResponse(response);
   return false;//bypass form default
 }
@@ -71,6 +77,6 @@ document.querySelector('button').onclick = userGuess;
 
 /* *************Next Step ***************/
 /* *************************************/
-/*  How to tell if someone has won  */
+/*  Keeping Track of letters used  */
 /* *************************************/
 /* *************************************/
