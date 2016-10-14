@@ -1,7 +1,7 @@
 "use strict";
 
 let guess;
-let guessedLetters;
+let guessedLetters = '';
 let randomWord;
 let tracker= [];
 
@@ -35,18 +35,31 @@ function makeTracker (randowWord) {
 }
 
 // If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
-function guessTracker (guess, guessedLetters) {
+function guessTracker (guess) {
   // TODO  make if statement with undefined
-  if (guessedLetters === undefined) {
-    guessedLetters = [];
-    guessedLetters[0] = guess;
+  for(var i = 0; i <= guessedLetters.length; i++) {
+    console.log(guessedLetters.length);
+    if(guess !== guessedLetters.charAt(i)) {
+      guessedLetters += guess;
+      console.log('guessed: ' + guessedLetters);
+      return guessedLetters;
+    }
+    else {
+      return false;
+    }
   }
-  // for (var i = 0; i < guessedLetters.length; i++) {
-  //     console.log('test: ' + guess);
-  //   //same letter is in guessedLetters already
-  //   // (if guess === guessedLetter[i]) {
-  //   }
 }
+  // if (guessedLetters === undefined) {
+  //   guessedLetters = [];
+  //   guessedLetters[0] = guess;
+  // }
+  // else if(guess.length = 1)
+  //   for (var i = 0; i < guessedLetters.length; i++) {
+  //       console.log('test: ' + guess);
+  //     //same letter is in guessedLetters already
+  //     // (if guess === guessedLetters[i]) {
+  //     }
+
 
 function checkGuess (guess, randomWord, tracker) {
   for (var i = 0; i < randomWord.length; i++) {
@@ -69,9 +82,9 @@ function printTracker (tracker) {
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
-  guessTracker(guess, guessedLetters);
   let check = checkGuess(guess, randomWord, tracker);
   printTracker(tracker);
+  guessTracker(guess);
   console.log(tracker.join(''));
   if (tracker.join('') === randomWord) {
     alert ('You have won this game, you lucky dog!');
@@ -92,6 +105,6 @@ document.querySelector('button').onclick = userGuess;
 
 /* *************Next Step ***************/
 /* *************************************/
-/*  Keeping Track of letters used  */
+/* TODO  Refactor */
 /* *************************************/
 /* *************************************/
