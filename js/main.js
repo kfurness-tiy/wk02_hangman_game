@@ -1,7 +1,7 @@
 "use strict";
 
 let guess;
-let guessedLetters = '';
+let guessedLetters = [];
 let randomWord = 'cheese';
 let tracker= [];
 let mistakes = 8;
@@ -33,32 +33,22 @@ function makeTracker (randowWord) {
 
 // If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
 function guessTracker (guess) {
-  function hasLetter(element, index, array) {
-    return element !== guess;
-  }
-  var guessReport = guessedLetters.every(hasLetter);
-  return guessReport;
+  // if (guessedLetters.length === 0) {
+  //     guessedLetters.push(guess);
+  //     document.querySelector('.guessedLetters').innerHTML = guessedLetters;
+  // }
+  // for(var i = 0; i < guessedLetters.length; i++) {
+  //   if (guess === guessedLetters.charAt(i)) {
+  //     document.querySelector('.alert').innerHTML = 'You have already guessed that letter';
+  //     // return false;
+  //   }
+  // }
+    guessedLetters.push(' ' + guess);
+    console.log(guessedLetters);
+    document.querySelector('.guessedLetters').innerHTML = guessedLetters;
 }
-//   for(var i = 0; i <= guessedLetters.length; i++) {
-//       if (guess === guessedLetters.charAt[i]) {
-//       console.log('cats');
-//       let repeatMsg = 'You already guessed that letter.';
-//       document.querySelector('.alert') =  repeatMsg;
-//       document.querySelector('.guessedLetters').innerHTML = guessedLetters;
-//       // return false;
-//     }
-//      else if (guess !== guessedLetters.charAt[i]) {
-//       guessedLetters += guess + ", ";
-//       console.log('guessed: ' + guessedLetters);
-//       document.querySelector('.guessedLetters').innerHTML = guessedLetters;
-//       return true;
-//     }
-//   }
-// }
 
-// WIP!!!!!!
-//************************************
-//***********************************
+
 function checkGuess (guess, randomWord, tracker) {
   if (randomWord.indexOf(guess) === -1) {
     mistakes -= 1;
@@ -92,13 +82,16 @@ function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
   // mistakes(check);
-  // guessTracker(guess);
+  guessTracker(guess);
   printTracker(tracker);
   console.log(tracker.join(''));
   if (tracker.join('') === randomWord) {
     alert ('You have won this game, you lucky dog!\nThe word was: ' + randomWord);
   }
-  // showResponse(response);
+  else if (mistakes === 0) {
+    document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
+    alert ('Oh bother. You lost the game.\nThe word was: ' + randomWord);
+  }
   return false;//bypass form default
 }
 
