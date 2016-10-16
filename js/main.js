@@ -33,16 +33,12 @@ function makeTracker (randowWord) {
 
 // If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
 function guessTracker (guess) {
-  // if (guessedLetters.length === 0) {
-  //     guessedLetters.push(guess);
-  //     document.querySelector('.guessedLetters').innerHTML = guessedLetters;
-  // }
-  // for(var i = 0; i < guessedLetters.length; i++) {
-  //   if (guess === guessedLetters.charAt(i)) {
-  //     document.querySelector('.alert').innerHTML = 'You have already guessed that letter';
-  //     // return false;
-  //   }
-  // }
+  for(var i = 0; i < guessedLetters.length; i++) {
+    if (' ' + guess === guessedLetters[i]) {
+      document.querySelector('.feedback').innerHTML = 'You have already guessed that letter';
+      return false;
+    }
+  }
     guessedLetters.push(' ' + guess);
     console.log(guessedLetters);
     document.querySelector('.guessedLetters').innerHTML = guessedLetters;
