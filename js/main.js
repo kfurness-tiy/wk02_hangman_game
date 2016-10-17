@@ -82,11 +82,13 @@ function userGuess() {
   printTracker(tracker);
   console.log(tracker.join(''));
   if (tracker.join('') === randomWord) {
-    alert ('You have won this game, you lucky dog!\nThe word was: ' + randomWord);
+    let won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
+    document.querySelector('.feedback').innerHTML = won;
   }
   else if (mistakes === 0) {
     document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
-    alert ('Oh bother. You lost the game.\nThe word was: ' + randomWord);
+    let lost = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
+    document.querySelector('.feedback').innerHTML = lost;
   }
   return false;//bypass form default
 }
