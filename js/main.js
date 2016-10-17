@@ -50,9 +50,9 @@ function checkGuess (guess, randomWord, tracker) {
     var msg = 'Try again';
     document.querySelector('.feedback').innerHTML = msg;
     document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
-    let body = ['head', 'neck', 'arm1', 'arm2', 'torso', 'leg1', 'leg2'];
+    let body = ['head', 'neck', 'arm1', 'arm2', 'torso', 'leg1', 'leg2', 'hang'];
     let selectBody = body[bodyCount];
-    if (mistakes > 0) {
+    if (mistakes > -1) {
       document.getElementById(selectBody).style.visibility = "visible";
       bodyCount += 1;
     }
