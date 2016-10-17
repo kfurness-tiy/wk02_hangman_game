@@ -4,7 +4,6 @@ let guess;
 let guessedLetters = [];
 let randomWord = 'cheese';
 let tracker= [];
-let mistakes = 8;
 
     //choose random Number
 
@@ -68,6 +67,7 @@ function playerInput () {
   return document.querySelector('input').value;
 }
 
+
 function printTracker (tracker) {
     document.querySelector('.tracker').innerHTML = tracker.join(' ');
 }
@@ -77,12 +77,11 @@ function printTracker (tracker) {
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
-  // mistakes(check);
-  guessTracker(guess);
   printTracker(tracker);
+  guessTracker(guess);
   console.log(tracker.join(''));
   if (tracker.join('') === randomWord) {
-    alert ('You have won this game, you lucky dog!\nThe word was: ' + randomWord);
+    alert ('You have won this game, you lucky dog!');
   }
   else if (mistakes === 0) {
     document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
@@ -103,6 +102,6 @@ document.querySelector('button').onclick = userGuess;
 
 /* *************Next Step ***************/
 /* *************************************/
-/* TODO  Check guess function, maybe switch if/else*/
+/* TODO  Keep Track of Mistakes */
 /* *************************************/
 /* *************************************/
