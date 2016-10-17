@@ -5,6 +5,7 @@ let guessedLetters = [];
 let randomWord = 'cheese';
 let tracker= [];
 let mistakes = 8;
+let bodyCount = 0;
 
     //choose random Number
 
@@ -51,6 +52,12 @@ function checkGuess (guess, randomWord, tracker) {
     var msg = 'Try again';
     document.querySelector('.feedback').innerHTML = msg;
     document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
+    let body = ['head', 'neck', 'arm1', 'arm2', 'torso', 'leg1', 'leg2'];
+    let selectBody = body[bodyCount];
+    if (mistakes > 0) {
+      document.getElementById(selectBody).style.visibility = "visible";
+      bodyCount += 1;
+    }
   }
   else {
     for (var i = 0; i < randomWord.length; i++) {
@@ -102,9 +109,3 @@ function windowOnload () {
 window.onload = windowOnload();
 
 document.querySelector('button').onclick = userGuess;
-
-/* *************Next Step ***************/
-/* *************************************/
-/* TODO  Check guess function, maybe switch if/else*/
-/* *************************************/
-/* *************************************/
