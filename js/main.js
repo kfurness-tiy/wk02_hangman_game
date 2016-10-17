@@ -20,7 +20,6 @@ function getRandomNumber (min, max) {
 function findRandomWord () {
   let number = getRandomNumber(0, commonWords.length);
   randomWord = commonWords[number];
-  console.log("Random Word: " + randomWord);
   return randomWord;
 }
 
@@ -41,7 +40,6 @@ function guessTracker (guess) {
     }
   }
     guessedLetters.push(' ' + guess);
-    console.log(guessedLetters);
     document.querySelector('.guessedLetters').innerHTML = guessedLetters;
 }
 
@@ -87,7 +85,6 @@ function userGuess() {
   // mistakes(check);
   guessTracker(guess);
   printTracker(tracker);
-  console.log(tracker.join(''));
   if (tracker.join('') === randomWord) {
     let won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
     document.querySelector('.feedback').innerHTML = won;
