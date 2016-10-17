@@ -70,6 +70,17 @@ input {
   margin: 10px 0;
 }
 
+.guessedLetters {
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.feedback {
+  font-size: 30px;
+  margin: 10px 0;
+  font-weight: bolder;
+}
+
 .mistakesLeft {
   font-size: 20px;
   margin: 10px 0;
@@ -83,11 +94,7 @@ input {
 }
 
 .body div {
-  width: 50px;
-  height: 50px;
-  background-color: skyblue;
-  margin: 20px; 0;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 #head {
@@ -146,8 +153,33 @@ input {
   background-color: black;
   margin: 0;
   top: -305px;
-  left: 305px;
+  left: 295px;
   transform: scaleX(-1) rotate(30deg);
-
   border-top-left-radius: 20px;
+}
+
+#leg1 {
+  position: relative;
+  width: 40px;
+  height: 160px;
+  background-color: #036;
+  top: -255px;
+  left: 215px;
+  margin: 0;
+}
+
+#leg2 {
+  position: relative;
+  width: 40px;
+  height: 160px;
+  background-color: #036;
+  top: -415px;
+  left: 265px;
+  margin: 0;
+}
+
+#dead {
+  position: relative;
+  left: 220px;
+  top: -835px;
 }
