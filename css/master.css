@@ -3,5 +3,9 @@
   height: 50px;
   background-color: skyblue;
   margin: 20px; 0;
-  visibility: hidden;
+  /*visibility: hidden;*/
+}
+
+#head {
+  border-radius: 50%;
 }
