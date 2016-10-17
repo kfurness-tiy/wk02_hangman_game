@@ -1,7 +1,7 @@
 "use strict";
 
 let guess;
-let guessedLetters = '';
+let guessedLetters = [];
 let randomWord = 'cheese';
 let tracker= [];
 
@@ -32,32 +32,41 @@ function makeTracker (randowWord) {
 
 // If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
 function guessTracker (guess) {
-  for(var i = 0; i <= guessedLetters.length; i++) {
-    console.log(guessedLetters.length);
-    if(guess !== guessedLetters.charAt(i)) {
-      guessedLetters += guess + ", ";
-      console.log('guessed: ' + guessedLetters);
-      document.querySelector('.guessedLetters').innerHTML = guessedLetters;
-      return guessedLetters;
-    }
-    else {
+  for(var i = 0; i < guessedLetters.length; i++) {
+    if (' ' + guess === guessedLetters[i]) {
+      document.querySelector('.feedback').innerHTML = 'You have already guessed that letter';
       return false;
     }
   }
+    guessedLetters.push(' ' + guess);
+    console.log(guessedLetters);
+    document.querySelector('.guessedLetters').innerHTML = guessedLetters;
 }
 
 
 function checkGuess (guess, randomWord, tracker) {
-  for (var i = 0; i < randomWord.length; i++) {
-    if (guess === randomWord[i]) {
-      tracker[i] = guess;
+  if (randomWord.indexOf(guess) === -1) {
+    mistakes -= 1;
+    var msg = 'Try again';
+    document.querySelector('.feedback').innerHTML = msg;
+    document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
+  }
+  else {
+    for (var i = 0; i < randomWord.length; i++) {
+      if (guess === randomWord[i]) {
+        tracker[i] = guess;
+        var msg = 'Great guess!'
+        document.querySelector('.feedback').innerHTML = msg;
+      }
     }
   }
 }
 
+
 function playerInput () {
   return document.querySelector('input').value;
 }
+
 
 function printTracker (tracker) {
     document.querySelector('.tracker').innerHTML = tracker.join(' ');
@@ -74,7 +83,10 @@ function userGuess() {
   if (tracker.join('') === randomWord) {
     alert ('You have won this game, you lucky dog!');
   }
-  // showResponse(response);
+  else if (mistakes === 0) {
+    document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
+    alert ('Oh bother. You lost the game.\nThe word was: ' + randomWord);
+  }
   return false;//bypass form default
 }
 
