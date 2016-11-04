@@ -2,7 +2,7 @@
 
 let guess;
 let guessedLetters = [];
-let randomWord = 'cheese';
+let randomWord;
 let tracker= [];
 let mistakes = 8;
 let bodyCount = 0;
@@ -20,6 +20,7 @@ function getRandomNumber (min, max) {
 function findRandomWord () {
   let number = getRandomNumber(0, commonWords.length);
   randomWord = commonWords[number];
+  console.log(randomWord);
   return randomWord;
 }
 
@@ -50,7 +51,7 @@ function checkGuess (guess, randomWord, tracker) {
     var msg = 'Try again';
     document.querySelector('.feedback').innerHTML = msg;
     document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
-    let body = ['head', 'neck', 'arm1', 'arm2', 'torso', 'leg1', 'leg2', 'hang'];
+    let body = ['head', 'neck', 'torso', 'arm1', 'arm2',  'leg1', 'leg2', 'hang'];
     let selectBody = body[bodyCount];
     if (mistakes > -1) {
       document.getElementById(selectBody).style.visibility = "visible";
@@ -82,23 +83,26 @@ function printTracker (tracker) {
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
+  let state = {
+    won: "",
+    lost: "",
+  };
   // mistakes(check);
   guessTracker(guess);
   printTracker(tracker);
   if (tracker.join('') === randomWord) {
-    let won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
-    document.querySelector('.feedback').innerHTML = won;
+    state.won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
   }
   else if (mistakes === 0) {
-    document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
-    let lost = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
-    document.querySelector('.feedback').innerHTML = lost;
+    state.lost = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
   }
+  render(state);
   return false;//bypass form default
 }
 
 function windowOnload () {
   findRandomWord();
+  console.log(randomWord);
   makeTracker(randomWord);
   document.querySelector('.tracker').innerHTML = tracker.join(' ');
 }
