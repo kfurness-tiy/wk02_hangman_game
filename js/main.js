@@ -7,8 +7,6 @@ let tracker= [];
 let mistakes = 8;
 let bodyCount = 0;
 let state = {
-  won: "",
-  lost: "",
   tracker: [],
   feedback: ""
 }
@@ -91,10 +89,10 @@ function userGuess() {
   // mistakes(check);
   guessTracker(guess);
   if (tracker.join('') === randomWord) {
-    state.won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
+    state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
   }
   else if (mistakes === 0) {
-    state.lost = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
+    state.feedback = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
   }
   render(state);
   return false;//bypass form default
