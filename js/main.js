@@ -6,6 +6,12 @@ let randomWord;
 let tracker= [];
 let mistakes = 8;
 let bodyCount = 0;
+let state = {
+  won: "",
+  lost: "",
+  tracker: [],
+  feedback: ""
+}
 
     //choose random Number
 
@@ -29,6 +35,7 @@ function makeTracker (randowWord) {
   tracker = [];
   for (var i = 0; i < randomWord.length; i++) {
     tracker.push(' _');
+    state.tracker.push(' _');
   }
 }
 
@@ -36,13 +43,14 @@ function makeTracker (randowWord) {
 function guessTracker (guess) {
   for(var i = 0; i < guessedLetters.length; i++) {
     if (' ' + guess === guessedLetters[i]) {
-      document.querySelector('.feedback').innerHTML = 'You have already guessed that letter';
+      state.feedback = 'You have already guessed that letter'
+      render(state);
       return false;
     }
   }
     guessedLetters.push(' ' + guess);
     document.querySelector('.guessedLetters').innerHTML = guessedLetters;
-}
+  }
 
 
 function checkGuess (guess, randomWord, tracker) {
@@ -62,6 +70,7 @@ function checkGuess (guess, randomWord, tracker) {
     for (var i = 0; i < randomWord.length; i++) {
       if (guess === randomWord[i]) {
         tracker[i] = guess;
+        state.tracker[i] = guess;
         var msg = 'Great guess!'
         document.querySelector('.feedback').innerHTML = msg;
       }
@@ -74,22 +83,13 @@ function playerInput () {
   return document.querySelector('input').value;
 }
 
-function printTracker (tracker) {
-    document.querySelector('.tracker').innerHTML = tracker.join(' ');
-}
-
     //Start game
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
-  let state = {
-    won: "",
-    lost: "",
-  };
   // mistakes(check);
   guessTracker(guess);
-  printTracker(tracker);
   if (tracker.join('') === randomWord) {
     state.won = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
   }
