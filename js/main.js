@@ -3,14 +3,20 @@
 let guess;
 let randomWord;
 let tracker= [];
-let mistakes = 8;
-let bodyCount = 0;
 let state = {
   tracker: [],
   feedback: "",
   guessedLetters: [],
   mistakes: 8,
-  mistakeMessage: ""
+  mistakeMessage: "",
+  head: 'hidden',
+  neck: 'hidden',
+  torso: 'hidden',
+  arm1: 'hidden',
+  arm2: 'hidden',
+  leg1: 'hidden',
+  leg2: 'hidden',
+  hang: 'hidden'
 }
 
     //choose random Number
@@ -54,16 +60,36 @@ function guessTracker (guess) {
 
 function checkGuess (guess, randomWord, tracker) {
   if (randomWord.indexOf(guess) === -1) {
-    mistakes -= 1;
     state.mistakes -= 1;
     state.mistakeMessage = 'You have ' + state.mistakes + ' mistakes left.'
     state.feedback = 'Try again';
     render(state);
-    let body = ['head', 'neck', 'torso', 'arm1', 'arm2',  'leg1', 'leg2', 'hang'];
-    let selectBody = body[bodyCount];
-    if (mistakes > -1) {
-      document.getElementById(selectBody).style.visibility = "visible";
-      bodyCount += 1;
+    if (state.mistakes > -1) {
+      if (state.head === 'hidden') {
+        state.head = 'visible';
+      }
+      else if (state.neck === 'hidden') {
+        state.neck = 'visible';
+      }
+      else if (state.torso === 'hidden') {
+        state.torso = 'visible';
+      }
+      else if (state.arm1 === 'hidden') {
+        state.arm1 = 'visible';
+      }
+      else if (state.arm2 === 'hidden') {
+        state.arm2 = 'visible';
+      }
+      else if (state.leg1 === 'hidden') {
+        state.leg1 = 'visible';
+      }
+      else if (state.leg2 === 'hidden') {
+        state.leg2 = 'visible';
+      }
+      else if (state.hang === 'hidden') {
+          state.hang = 'visible';
+        }
+      render(state);
     }
   }
   else {
@@ -88,12 +114,11 @@ function playerInput () {
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
   let check = checkGuess(guess, randomWord, tracker);
-  // mistakes(check);
   guessTracker(guess);
   if (tracker.join('') === randomWord) {
     state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
   }
-  else if (mistakes === 0) {
+  else if (state.mistakes === 0) {
     state.feedback = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
   }
   render(state);
