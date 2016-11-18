@@ -8,7 +8,9 @@ let bodyCount = 0;
 let state = {
   tracker: [],
   feedback: "",
-  guessedLetters: []
+  guessedLetters: [],
+  mistakes: 8,
+  mistakeMessage: ""
 }
 
     //choose random Number
@@ -53,9 +55,10 @@ function guessTracker (guess) {
 function checkGuess (guess, randomWord, tracker) {
   if (randomWord.indexOf(guess) === -1) {
     mistakes -= 1;
-    var msg = 'Try again';
-    document.querySelector('.feedback').innerHTML = msg;
-    document.querySelector('.mistakesLeft').innerHTML = 'You have ' + mistakes + ' mistakes left.';
+    state.mistakes -= 1;
+    state.mistakeMessage = 'You have ' + state.mistakes + ' mistakes left.'
+    state.feedback = 'Try again';
+    render(state);
     let body = ['head', 'neck', 'torso', 'arm1', 'arm2',  'leg1', 'leg2', 'hang'];
     let selectBody = body[bodyCount];
     if (mistakes > -1) {

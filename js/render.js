@@ -2,6 +2,7 @@ function render(state) {
   renderTracker(state);
   renderFeedback(state);
   renderGuessTracker(state);
+  renderMistakes(state);
 }
 
 function renderTracker(state) {
@@ -14,4 +15,8 @@ function renderFeedback(state) {
 
 function renderGuessTracker(state) {
     document.querySelector('.guessedLetters').innerHTML = state.guessedLetters;
+}
+
+function renderMistakes(state) {
+  document.querySelector('.mistakesLeft').innerHTML = state.mistakeMessage;
 }
