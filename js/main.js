@@ -8,7 +8,8 @@ let mistakes = 8;
 let bodyCount = 0;
 let state = {
   tracker: [],
-  feedback: ""
+  feedback: "",
+  guessedLetters: []
 }
 
     //choose random Number
@@ -47,7 +48,7 @@ function guessTracker (guess) {
     }
   }
     guessedLetters.push(' ' + guess);
-    document.querySelector('.guessedLetters').innerHTML = guessedLetters;
+    state.guessedLetters.push(' ' + guess);
   }
 
 
