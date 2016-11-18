@@ -1,7 +1,6 @@
 "use strict";
 
 let guess;
-let guessedLetters = [];
 let randomWord;
 let tracker= [];
 let mistakes = 8;
@@ -40,14 +39,13 @@ function makeTracker (randowWord) {
 
 // If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
 function guessTracker (guess) {
-  for(var i = 0; i < guessedLetters.length; i++) {
-    if (' ' + guess === guessedLetters[i]) {
+  for(var i = 0; i < state.guessedLetters.length; i++) {
+    if (' ' + guess === state.guessedLetters[i]) {
       state.feedback = 'You have already guessed that letter'
       render(state);
       return false;
     }
   }
-    guessedLetters.push(' ' + guess);
     state.guessedLetters.push(' ' + guess);
   }
 
