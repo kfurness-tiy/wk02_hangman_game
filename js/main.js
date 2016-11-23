@@ -2,7 +2,6 @@
 
 let guess;
 let randomWord;
-let tracker= [];
 let state = {
   tracker: [],
   feedback: "",
@@ -36,16 +35,13 @@ function findRandomWord () {
   return randomWord;
 }
 
-    //Creates the tracker
 function makeTracker (randowWord) {
-  tracker = [];
+  state.tracker = [];
   for (var i = 0; i < randomWord.length; i++) {
-    tracker.push(' _');
     state.tracker.push(' _');
   }
 }
 
-// If the guess is already a letter in guess tracker, don't return it. If it is a new letter, put in array.
 function guessTracker (guess) {
   for(var i = 0; i < state.guessedLetters.length; i++) {
     if (' ' + guess === state.guessedLetters[i]) {
@@ -85,7 +81,6 @@ function checkGuess (guess, randomWord, tracker) {
   } else {
     for (var i = 0; i < randomWord.length; i++) {
       if (guess === randomWord[i]) {
-        tracker[i] = guess;
         state.tracker[i] = guess;
         state.feedback = 'Great guess!';
       }
@@ -103,9 +98,9 @@ function playerInput () {
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
-  let check = checkGuess(guess, randomWord, tracker);
+  let check = checkGuess(guess, randomWord, state.tracker);
   guessTracker(guess);
-  if (tracker.join('') === randomWord) {
+  if (state.tracker.join('') === randomWord) {
     state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
   }
   else if (state.mistakes === 0) {
@@ -119,7 +114,7 @@ function windowOnload () {
   findRandomWord();
   console.log(randomWord);
   makeTracker(randomWord);
-  document.querySelector('.tracker').innerHTML = tracker.join(' ');
+  render(state);
 }
 
 window.onload = windowOnload();
