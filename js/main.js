@@ -1,7 +1,7 @@
 "use strict";
 
-let randomWord;
 let state = {
+  randomWord: "",
   guess: "",
   tracker: [],
   feedback: "",
@@ -30,14 +30,14 @@ function getRandomNumber (min, max) {
 
 function findRandomWord () {
   let number = getRandomNumber(0, commonWords.length);
-  randomWord = commonWords[number];
-  console.log(randomWord);
-  return randomWord;
+  state.randomWord = commonWords[number];
+  console.log(state.randomWord);
+  return state.randomWord;
 }
 
-function makeTracker (randowWord) {
+function makeTracker () {
   state.tracker = [];
-  for (var i = 0; i < randomWord.length; i++) {
+  for (var i = 0; i < state.randomWord.length; i++) {
     state.tracker.push(' _');
   }
 }
@@ -54,8 +54,8 @@ function guessTracker () {
   }
 
 
-function checkGuess (randomWord) {
-  if (randomWord.indexOf(state.guess) === -1) {
+function checkGuess () {
+  if (state.randomWord.indexOf(state.guess) === -1) {
     state.mistakes -= 1;
     state.mistakeMessage = 'You have ' + state.mistakes + ' mistakes left.'
     state.feedback = 'Try again';
@@ -79,8 +79,8 @@ function checkGuess (randomWord) {
         }
     }
   } else {
-    for (var i = 0; i < randomWord.length; i++) {
-      if (state.guess === randomWord[i]) {
+    for (var i = 0; i < state.randomWord.length; i++) {
+      if (state.guess === state.randomWord[i]) {
         state.tracker[i] = state.guess;
         state.feedback = 'Great guess!';
       }
@@ -98,13 +98,13 @@ function playerInput () {
 
 function userGuess() {
   state.guess = playerInput();
-  let check = checkGuess(randomWord);
+  let check = checkGuess();
   guessTracker();
-  if (state.tracker.join('') === randomWord) {
-    state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
+  if (state.tracker.join('') === state.randomWord) {
+    state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + state.randomWord;
   }
   else if (state.mistakes === 0) {
-    state.feedback = 'Oh bother. You lost the game.\nThe word was: ' + randomWord;
+    state.feedback = 'Oh bother. You lost the game.\nThe word was: ' + state.randomWord;
   }
   render(state);
   return false;//bypass form default
@@ -112,8 +112,7 @@ function userGuess() {
 
 function windowOnload () {
   findRandomWord();
-  console.log(randomWord);
-  makeTracker(randomWord);
+  makeTracker();
   render(state);
 }
 
