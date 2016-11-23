@@ -54,7 +54,7 @@ function guessTracker (guess) {
   }
 
 
-function checkGuess (guess, randomWord, tracker) {
+function checkGuess (guess, randomWord) {
   if (randomWord.indexOf(guess) === -1) {
     state.mistakes -= 1;
     state.mistakeMessage = 'You have ' + state.mistakes + ' mistakes left.'
@@ -98,7 +98,7 @@ function playerInput () {
 
 function userGuess() {
   guess = playerInput(); //Takes input, calls it guess
-  let check = checkGuess(guess, randomWord, state.tracker);
+  let check = checkGuess(guess, randomWord);
   guessTracker(guess);
   if (state.tracker.join('') === randomWord) {
     state.feedback = 'You have won this game, you lucky dog!\nThe word was: ' + randomWord;
