@@ -63,45 +63,35 @@ function checkGuess (guess, randomWord, tracker) {
     state.mistakes -= 1;
     state.mistakeMessage = 'You have ' + state.mistakes + ' mistakes left.'
     state.feedback = 'Try again';
-    render(state);
     if (state.mistakes > -1) {
       if (state.head === 'hidden') {
         state.head = 'visible';
-      }
-      else if (state.neck === 'hidden') {
+      } else if (state.neck === 'hidden') {
         state.neck = 'visible';
-      }
-      else if (state.torso === 'hidden') {
+      } else if (state.torso === 'hidden') {
         state.torso = 'visible';
-      }
-      else if (state.arm1 === 'hidden') {
+      } else if (state.arm1 === 'hidden') {
         state.arm1 = 'visible';
-      }
-      else if (state.arm2 === 'hidden') {
+      } else if (state.arm2 === 'hidden') {
         state.arm2 = 'visible';
-      }
-      else if (state.leg1 === 'hidden') {
+      } else if (state.leg1 === 'hidden') {
         state.leg1 = 'visible';
-      }
-      else if (state.leg2 === 'hidden') {
+      } else if (state.leg2 === 'hidden') {
         state.leg2 = 'visible';
-      }
-      else if (state.hang === 'hidden') {
+      } else if (state.hang === 'hidden') {
           state.hang = 'visible';
         }
-      render(state);
     }
-  }
-  else {
+  } else {
     for (var i = 0; i < randomWord.length; i++) {
       if (guess === randomWord[i]) {
         tracker[i] = guess;
         state.tracker[i] = guess;
-        var msg = 'Great guess!'
-        document.querySelector('.feedback').innerHTML = msg;
+        state.feedback = 'Great guess!';
       }
     }
   }
+  render(state);
 }
 
 
