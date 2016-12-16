@@ -31,7 +31,6 @@ function getRandomNumber (min, max) {
 function findRandomWord () {
   let number = getRandomNumber(0, commonWords.length);
   state.randomWord = commonWords[number];
-  console.log(state.randomWord);
   return state.randomWord;
 }
 
