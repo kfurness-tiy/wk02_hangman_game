@@ -65,6 +65,35 @@ input {
   text-decoration: none;
 }
 
+.reset {
+    margin: 5px;
+    background: #ba3437;
+    background-image: -webkit-linear-gradient(top, #ba3437, #99494b);
+    background-image: -moz-linear-gradient(top, #ba3437, #99494b);
+    background-image: -ms-linear-gradient(top, #ba3437, #99494b);
+    background-image: -o-linear-gradient(top, #ba3437, #99494b);
+    background-image: linear-gradient(to bottom, #ba3437, #99494b);
+    -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+    border-color: #d69091;
+    border-radius: 12px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+.reset:hover {
+  background: #842124;
+  background-image: -webkit-linear-gradient(top, #842124, #633839);
+  background-image: -moz-linear-gradient(top, #842124, #633839);
+  background-image: -ms-linear-gradient(top, #842124, #633839);
+  background-image: -o-linear-gradient(top, #842124, #633839);
+  background-image: linear-gradient(to bottom, #842124, #633839);
+  text-decoration: none;
+}
+
 .tracker {
   font-size: 25px;
   margin: 10px 0;

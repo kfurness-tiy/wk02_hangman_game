@@ -15,7 +15,8 @@ let state = {
   arm2: 'hidden',
   leg1: 'hidden',
   leg2: 'hidden',
-  hang: 'hidden'
+  hang: 'hidden',
+  btn: 'visible'
 }
 
     //choose random Number
@@ -104,6 +105,7 @@ function userGuess() {
   }
   else if (state.mistakes === 0) {
     state.feedback = 'Oh bother. You lost the game.\nThe word was: ' + state.randomWord;
+    state.btn = 'hidden';
   }
   render(state);
   return false;//bypass form default
@@ -115,6 +117,11 @@ function windowOnload () {
   render(state);
 }
 
+const reset = () => {
+  location.reload();
+}
+
 window.onload = windowOnload();
 
-document.querySelector('button').onclick = userGuess;
+document.querySelector('.btn').onclick = userGuess;
+document.querySelector('.reset').onclick = reset;

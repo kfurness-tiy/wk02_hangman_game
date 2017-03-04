@@ -11,6 +11,7 @@ function render(state) {
   renderLeg1(state);
   renderLeg2(state);
   renderHang(state);
+  renderHideButton(state);
 }
 
 function renderTracker(state) {
@@ -58,4 +59,8 @@ function renderLeg2(state) {
 
 function renderHang(state) {
   document.getElementById('hang').style.visibility = state.hang;
+}
+
+function renderHideButton(state) {
+  document.getElementById('btn').style.visibility = state.btn;
 }
